@@ -10,7 +10,7 @@ const footballers = {
         nationality: "Brazilian"
     },
     kaka: {
-        fullname: "Ricardo Izecson dos Santos Leite",
+        fullName: "Ricardo Izecson dos Santos Leite",
         birthYear: "5 February 1985",
         age: 37,
         nationality: "Brazilian"
@@ -27,10 +27,14 @@ app.get("/", (request, response) => {
     response.sendFile(__dirname + "/index.html");
 })
 
+app.get("/main.js", (request, response) => {
+    response.sendFile(__dirname + "/main.js");
+})
+
 app.get("/api/:name", (request, response) => {
     const footballerName = request.params.name;
     if (footballers[footballerName]) {
-        response.json(footballers[footballerName.fullName]);
+        response.json(footballers[footballerName]);
     } else {
         response.json(footballers["unknown"]);
     }
